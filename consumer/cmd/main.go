@@ -3,8 +3,8 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/confluentinc/confluent-kafka-go/kafka"
 	"git.davidcheah.com/go-kafka/producer"
+	"github.com/confluentinc/confluent-kafka-go/kafka"
 )
 
 func main() {
@@ -16,7 +16,7 @@ func main() {
 
 func subscribeKafka() error {
 	configMap := kafka.ConfigMap{
-		"bootstrap.servers": "localhost:9092",
+		"bootstrap.servers": "localhost:9092,localhost:9093,localhost:9094",
 		"group.id":          "group-id-1",
 		"auto.offset.reset": "earliest",
 	}
@@ -42,7 +42,7 @@ func subscribeKafka() error {
 		if err != nil {
 			fmt.Println("an error occurs when getting job, ", err.Error())
 		} else {
-			fmt.Println("Received job: ",job)
+			fmt.Println("Received job: ", job)
 		}
 	}
 
@@ -50,7 +50,7 @@ func subscribeKafka() error {
 
 }
 
-func getJob(b []byte ) (producer.Job,error){
+func getJob(b []byte) (producer.Job, error) {
 	var job producer.Job
 	err := json.Unmarshal(b, &job)
 	return job, err

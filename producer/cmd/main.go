@@ -55,7 +55,7 @@ func saveJob(job producer.Job) error {
 	}
 
 	configMap := kafka.ConfigMap{
-		"bootstrap.servers": "localhost:9092,localhost:9093,localhost:9094",
+		"bootstrap.servers": "localhost:19092,localhost:29092,localhost:39092",
 	}
 
 	p, err := kafka.NewProducer(&configMap)

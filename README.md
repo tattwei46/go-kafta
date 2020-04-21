@@ -32,6 +32,16 @@ curl --location --request POST 'http://0.0.0.0:8080/go-kafka/v1/jobs' \
 	"description": "description"
 }'
 ```
+
+## Running Kafka Cluster in docker
+### Build docker images of Zookeeper and Kafka
+```
+docker-compose build
+```
+### Run docker images of Zookeeper and Kafka
+```
+MY_IP=192.168.1.106 docker-compose up  
+```
 ## Running Kafka Cluster Manually
 ### Start Zookeeper
 ```cassandraql
